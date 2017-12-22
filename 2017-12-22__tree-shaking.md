@@ -238,6 +238,21 @@ module.exports = {
 
 对第三方包来说也是，应当使用 ES6 模块。幸运的是，越来越多的包作者同时发布 CommonJS 格式 和 ES6 格式的模块。ES6 模块的入口由 package.json 的字段 `module` 指定。
 
+#### 已知Bug
+
+如果我把上面的webpack配置的entry把a.js也给加上之后，tree shaking会失败
+
+```js
+module.exports = {
+  entry: {
+    index: './src/index.js',
+    a: './src/a.js'
+  }
+}
+```
+
+这个bug可以在github上的这个[issue](https://github.com/webpack/webpack/issues/5954)找到
+
 ## 总结
 
 通过 tree-shaking 你可以相当程度上减少应用的体积。Webpack 2 内置支持它，但其机制并不同于 `Rollup` 。它会包含所有的代码，标记未使用的函数和函数，以便压缩工具能够移除。这就是对所有代码都进行 tree-shake 的困难之处。使用默认的压缩工具 `UglifyJS` 或 `babel-minify-webpack-plugin`来移除。我们还必须特别注意第三方模块发布的方式是否支持 tree-shaking。
