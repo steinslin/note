@@ -2,7 +2,9 @@
 
 ## commonjs和es6模块的差异
 
-#### 在webpack打包时，设置如下的babel配置进行实验的结果
+### commonjs是动态加载 es6是静态解析
+
+##### 在webpack打包时，设置如下的babel配置进行实验的结果
 
 ```js
 {
@@ -167,4 +169,44 @@ setTimeout(function () {
   exports.default = c = 2;
 }, 1000);
 
+```
+
+##### UMD模块
+
+`umd` 模块是动态导出，所以不能采用es6方式导入（并不是指不能import，而是指设置"modules": false），只能使用 `commonjs` 方式导入
+
+
+##### 各种在es6模块下不能正常引入，但是在commonjs中可以的例子
+
+1. `umd`
+
+```js
+(function (root, factory) {
+  console.log(typeof module);
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(factory);
+  } else if (typeof module === 'object' && module.exports) {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory();
+  } else {
+    // Browser globals (root is window)
+    root.Popper = factory();
+  }
+}(this, function () {
+  // return 
+})
+```
+
+上面是典型的umd格式，动态导出，由于es6是静态解析，所以不能采用es6进行处理
+
+2. 当`module.exports` 或 `exports` 和 `import` 或 `export` 共存的时候
+
+```js
+// 两者共存只能采用commonjs打包，因为这样不存在exports对象
+export const a = 1;
+
+exports.b = 1 
 ```
