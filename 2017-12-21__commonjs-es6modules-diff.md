@@ -4,6 +4,16 @@
 
 ### commonjs是动态加载 es6是静态解析
 
+```js
+if (true) {
+  // 可以这样写 因为commonjs是动态的
+  exports.a = 1
+} else {
+  // 错误
+  export const a = 1
+}
+```
+
 ##### 在webpack打包时，设置如下的babel配置进行实验的结果
 
 ```js
