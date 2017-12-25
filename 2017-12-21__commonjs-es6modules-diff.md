@@ -208,5 +208,5 @@ setTimeout(function () {
 // 两者共存只能采用commonjs打包，因为这样不存在exports对象
 export const a = 1;
 
-exports.b = 1 
+exports.b = 1;
 ```
