@@ -59,7 +59,7 @@ module.exports = {
 }
 ```
 
-我们打包时不使用编译器（`Babel` 等）和压缩工具（ `UglifyJS`  等），可以得到如下输出：
+我们打包时不使用编译器（`Babel` 等）和压缩工具（ `UglifyJS` 等），可以得到如下输出：
 
 ```js
 (function(module, __webpack_exports__, __webpack_require__) {
