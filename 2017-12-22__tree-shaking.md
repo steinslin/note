@@ -267,9 +267,8 @@ module.exports = {
 
 ## 总结
 
-通过 tree-shaking 你可以相当程度上减少应用的体积。Webpack 2 内置支持它，但其机制并不同于 `Rollup` 。它会包含所有的代码，标记未使用的函数和函数，以便压缩工具能够移除。这就是对所有代码都进行 tree-shake 的困难之处。使用默认的压缩工具 `UglifyJS` 或 `babel-minify-webpack-plugin`来移除。我们还必须特别注意第三方模块发布的方式是否支持 tree-shaking。
+通过 tree-shaking 你可以相当程度上减少应用的体积。`Webpack` 2 内置支持它，但其机制并不同于 `Rollup` 。它会包含所有的代码，标记未使用的函数和函数，以便压缩工具能够移除。使用默认的压缩工具 `UglifyJS` 或 `babel-minify-webpack-plugin`来移除。我们还必须特别注意第三方模块发布的方式是否支持 tree-shaking。
 
 ## 参考文章
 
 [如何评价 Webpack 2 新引入的 Tree-shaking 代码优化技术？](https://www.zhihu.com/question/41922432/answer/93346223)
-[]
