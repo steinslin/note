@@ -4,7 +4,7 @@
 
 在js中的tree shaking最早由 `rollup` 作者提出，利用ES6 modules 的静态特性得以实现的。在打包时可以检测到未使用的代码，然后删除。webpack2也引入了这一技术， `webpack2` 已经内置支持es6模块和tree-shaking，本文会介绍tree-shaking的应用和一些问题。
 
-### 简单demo
+### webpack版
 
 采用es6语法导出fucntion、class、var等
 
@@ -264,6 +264,61 @@ module.exports = {
   }
 }]
 ```
+
+### Rollup版
+
+`rollup` 的 `tree shaking` 是自带的，无需额外配置
+
+> rollup.config.js
+
+```js
+export default {
+  input: 'src/main.js',
+  output: {
+    file: 'rollup.bundle.js',
+    format: 'cjs'
+  }
+}
+```
+
+> main.js
+
+```js
+import { a } from './util'
+
+a()
+```
+
+> util.js
+
+```js
+export function a () {
+  console.log('a')
+}
+
+export function b () {
+  console.log('b')
+}
+```
+
+> build
+
+```shell
+rollup -c
+```
+
+> output rollup.bundle.js
+```js
+'use strict';
+
+function a () {
+  console.log('a');
+}
+
+a();
+```
+
+输出结果不会引入b函数，而且对比webpack代码更少，也能直接读懂
 
 ## 总结
 
