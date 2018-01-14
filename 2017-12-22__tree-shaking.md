@@ -97,11 +97,11 @@ class T2 {
 
 从上面的输出可以看到类似 `/* unused harmony export b */` `/* unused harmony export default */` 这样的结果，webpack会用注释把未使用的class、function等等给记录下来，用 `/* harmony export (immutable) */` 来记录用到的变量。你可能会问为使用的代码怎么还在？不是应该被删除吗？
 
-#### 移除未使用代码（Dead code elimination） vs 包含已使用代码（live code inclusion）
+#### 移除未使用代码（Dead code elimination)
 
 这背后的原因是，`webpack` 仅仅只是把未使用的代码和使用的代码分别用注释标注出来，剩余的工作需要交给类似  `UglifyJS`  这类代码压缩工具。
 
-> 配置 `UglifyJS` 用以压缩代码和删除DCE
+> 配置 `UglifyJS` 用以压缩代码和DCE
 
 ```js
 module.exports = {
@@ -236,7 +236,7 @@ module.exports = {
 
 #### 第三方包的tree shaking
 
-对第三方包来说也是，应当使用 ES6 模块。幸运的是，越来越多的包作者同时发布 CommonJS 格式 和 ES6 格式的模块。ES6 模块的入口由 package.json 的字段 `module` 指定。比如 `vue` ，`module` 指定的是 `dist/vue.runtime.esm.js` ，这个只包含了runtime功能，但是有时候会需要用到 `template` 字段，这个时候就需要引入 `dist/vue.esm.js` 可以通过修改 `alias` 改变。
+对第三方包来说也是，应当使用 ES6 模块。现在越来越多的包作者同时发布 CommonJS 格式 和 ES6 格式的模块。ES6 模块的入口由 package.json 的字段 `module` 指定。比如 `vue` ，`module` 指定的是 `dist/vue.runtime.esm.js` ，这个只包含了runtime功能，但是有时候会需要用到 `template` 字段，这个时候就需要引入 `dist/vue.esm.js` 可以通过修改 `alias` 改变。
 
 #### 已知Bug
 
