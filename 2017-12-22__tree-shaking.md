@@ -318,7 +318,11 @@ function a () {
 a();
 ```
 
-输出结果不会引入b函数，而且对比webpack代码更少，也能直接读懂
+输出结果不会引入 `b` 函数，而且对比 `webpack` 代码更少
+
+#### 第三方包的tree shaking
+
+对第三方包来说同样是需要 ES6 模块，另外 `rollup` 处理 `commonjs模块` 需要借助 [rollup-plugin-commonjs](https://github.com/rollup/rollup-plugin-commonjs)插件
 
 ## 总结
 
