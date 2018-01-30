@@ -1,0 +1,25 @@
+{
+  "name": "note",
+  "version": "1.0.0",
+  "description": "",
+  "main": "monitor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linrui1994/note.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linrui1994/note/issues"
+  },
+  "homepage": "https://github.com/linrui1994/note#readme",
+  "dependencies": {
+    "asciichart": "^1.5.7",
+    "chalk": "^2.3.0",
+    "log-update": "^2.3.0",
+    "measured": "^1.1.0"
+  }
+}
