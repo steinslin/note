@@ -6,7 +6,6 @@ const html = md.render(profile)
 const express = require('express')
 const app = express()
 
-console.log(profile)
 console.log(html)
 
 app.use('*', (req, res) => {

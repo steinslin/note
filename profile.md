@@ -1,12 +1,16 @@
-姓名:** **林锐**   **求职意向:** **前端开发**
-**Phone:** **13728738411**   **Email:** **linrui1994@foxmail.com**
-**GitHub:** **[https://github.com/linrui1994](https://github.com/linrui1994)** **掘金:**  **https://juejin.im/user/5a7db56bf265da4e7a784d03**
+#### 个人信息
 
-### 教育经历
+**姓名: 林锐                                                                  求职意向: 前端开发工程师**
+
+**Phone: 13728738411                                             Email: linrui1994@foxmail.com**
+
+**GitHub: [https://github.com/linrui1994](https://github.com/linrui1994)           掘金: [https://juejin.im/user/5a7db56bf265da4e7a784d03](https://juejin.im/user/5a7db56bf265da4e7a784d03)**
+
+#### 教育经历
 
 > 2013.09 - 2017.06      深圳大学      软件工程专业
 
-### 个人技能
+#### 个人技能
 
 > 掌握html5、css3、ajax、es6、sass、less等前端技术
 
@@ -16,9 +20,9 @@
 
 > 熟练掌握与理解Vue技术栈，读过vuex源码和部分element-ui源码，熟悉webpack、babel，熟悉git flow
 
-### 工作经验
+#### 工作经验
 
-#### 国双科技 (2017.11 - 至今)
+##### 国双科技 (2017.11 - 至今)
 
 > 国双组件库(类似于element-ui)
 
@@ -29,7 +33,7 @@
 + 手脚架: 基于webpack，内置ts、es6、scss等支持，也引入happypack、dll等加速构建，另外还包括图片压缩，支持零配置启动。
 + 简单模板: 支持使用vue-cli下载，同时支持vuex。
 
-#### 深圳梦之舵信息技术公司（2017.03 - 2017.11）
+##### 深圳梦之舵信息技术公司（2017.03 - 2017.11）
 
 + 小恩爱h5: 主要负责模块开发、维护、性能优化与迭代等。性能优
   化主要有：webpack打包配置的优化，页面缓存处理，首屏渲染优化，惰性加载，骨架图loading占位，代码切分，tree shaking等。
@@ -38,9 +42,9 @@
 + 公共库: 复杂swiper、qrcode、upload、switch等组件和常用工具函数如deepCopy、debounce、throttle等开发
 + 脚手架优化: 对vue官方脚手架进行定制，支持的新特性有: 单页面与多页面无缝开发，开发环境自动生成二维码，方便在手机上调试（依赖webpack注入），html行内注入js（基于html-webpack-plugin开发的webpack插件）
 
-### 个人项目
+#### 个人项目
 
-#### 基于微信小程序的招聘系统（2017.02 - 2017.04）
+##### 基于微信小程序的招聘系统（2017.02 - 2017.04）
 
 + 功能点: 职位推荐、职位搜索、职位过滤、详情浏览、职位收藏、职位投递、消息反馈、邮件提醒、面试评价、简历创建、简历编
   辑、简历删除、用户设置、用户信息等
@@ -55,7 +59,7 @@
 
 + 项目地址：https://github.com/linrui1994/zhaopin
 
-### 自我定位
+#### 自我定位
 
 > 定位：主攻前端，涉猎其他领域知识，向全栈发展
 
