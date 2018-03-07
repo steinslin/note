@@ -19,7 +19,10 @@
   "dependencies": {
     "asciichart": "^1.5.7",
     "chalk": "^2.3.0",
+    "html-pdf": "^2.2.0",
+    "html-pdf-chrome": "^0.4.3",
     "log-update": "^2.3.0",
+    "markdown-it": "^8.4.1",
     "measured": "^1.1.0"
   },
   "devDependencies": {
