@@ -47,3 +47,13 @@ setInterval(() => {
     })
     .catch(err => console.error(err))
 }, 100)
+
+
+function Animal() {
+  this.type = 123
+}
+
+function Cat() {
+  Animal.call(this)
+  this.name = 'tom'
+}
