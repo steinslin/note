@@ -206,7 +206,7 @@ setTimeout(function () {
     root.Popper = factory();
   }
 }(this, function () {
-  // return 
+  // return
 })
 ```
 
