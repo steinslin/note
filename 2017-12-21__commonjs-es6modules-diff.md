@@ -28,9 +28,7 @@ if (true) {
 }
 ```
 
-> 采用modules: false是为了让webpack采用es6的方式处理模块，这个时候不会存在 `arguments` `require` `module` `exports` `__filename` `__dirname`这些顶层变量，这些变量是在commonjs在处理模块时在外面包的一层自执行所带来的
-
-> 当一个模块中采用es6抛出时,就不能再使用commonjs抛出，因为不存在`module` `exports`这些对象，去掉moudles:false就可以
+> 当一个模块中采用es6抛出时,就不能再使用commonjs抛出了
 
 ##### 采用es抛出
 ```js
@@ -43,7 +41,8 @@ setInterval(() => {
 }, 1000)
 export default b
 
-// 设置为module:false时报错 不存在exports、module
+// 不存在exports
+// module.exports为只读
 exports.c = 3
 module.exports = {
   c: 3
