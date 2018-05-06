@@ -57,3 +57,15 @@ function Cat() {
   Animal.call(this)
   this.name = 'tom'
 }
+
+// const valueOf = Array.prototype.valueOf
+// const toString = Array.prototype.toString
+// Array.prototype.valueOf = function () {
+//   console.log('valueOf')
+//   return valueOf.call(this)
+// }
+
+// Array.prototype.toString = function () {
+//   console.log('toString')
+//   return toString.call(this)
+// }
