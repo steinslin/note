@@ -58,14 +58,31 @@ function Cat() {
   this.name = 'tom'
 }
 
-// const valueOf = Array.prototype.valueOf
-// const toString = Array.prototype.toString
-// Array.prototype.valueOf = function () {
-//   console.log('valueOf')
-//   return valueOf.call(this)
-// }
+const valueOf = Array.prototype.valueOf
+const toString = Array.prototype.toString
+const oValueof = Object.prototype.valueOf
+const oToString = Object.prototype.toString
 
-// Array.prototype.toString = function () {
-//   console.log('toString')
-//   return toString.call(this)
-// }
+Array.prototype.valueOf = function () {
+  console.log('array valueOf')
+  return valueOf.call(this)
+}
+
+Array.prototype.toString = function () {
+  console.log('array toString')
+  return toString.call(this)
+}
+
+Object.prototype.valueOf = function () {
+  console.log('object valueOf')
+  return oValueof.call(this)
+}
+
+Object.prototype.toString = function () {
+  console.log('object toString')
+  return oToString.call(this)
+}
+
+[] + []
+{} + {}
+{} + []
