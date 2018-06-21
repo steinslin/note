@@ -36,3 +36,19 @@ const options = {
 };
 
 htmlPdf.create(html, options).then(pdf => pdf.toFile('./profile.pdf'))
+
+
+function p () {
+  setTimeout(() => {
+    console.log('settimeout 0')
+  }, 0)
+  window.requestAnimationFrame(() => {
+    console.log('request')
+  })
+  setTimeout(() => {
+    console.log('settimeout 0')
+  }, 0)
+  setTimeout(() => {
+    console.log('settimeout 17')
+  }, 17)
+}
