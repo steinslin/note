@@ -11,3 +11,6 @@
 > 包括但不限于`Date` `RegExp` `Arguments` `Set` `Map` `Array` `Symbol` `object String` `object Boolean`等类型，可以使用`Object.prototype.toString.call`来判断类型，分别做处理
 
 > 一些特殊类型无需拷贝，包括`function` `error` `weakMap`
+
+具体实现可以参考[lodash.clonedeep](https://github.com/lodash/lodash/blob/4.5.0-npm-packages/lodash.clonedeep/index.js)
+
