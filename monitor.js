@@ -82,7 +82,3 @@ Object.prototype.toString = function () {
   console.log('object toString')
   return oToString.call(this)
 }
-
-[] + []
-{} + {}
-{} + []

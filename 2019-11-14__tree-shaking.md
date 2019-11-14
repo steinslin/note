@@ -2,7 +2,7 @@
 
 ## tree shaking
 
-在js中的tree shaking最早由 `rollup` 作者提出，利用ES6 modules 的静态特性得以实现的。在打包时可以检测到未使用的代码，然后删除。webpack2也引入了这一技术， `webpack2` 已经内置支持es6模块和tree-shaking，本文会介绍tree-shaking的应用和一些问题。
+在js中的tree shaking最早由 `rollup` 作者提出，利用ES6 modules 的 `静态特性` 得以实现的。在打包时可以检测到未使用的代码，然后删除。webpack2也引入了这一技术， `webpack2` 已经内置支持es6模块和tree-shaking，本文会介绍tree-shaking的应用和一些问题。
 
 ### webpack版
 
@@ -218,29 +218,13 @@ Dropping unused variable _unused_webpack_default_export [index.bundle.js:113,40]
 
 搜索 `console.log` 可以知道 只剩下a和T1，其他没用的代码已经被删除。
 
-#### 采用 `babel-minify-webpack-plugin` 代替 `UglifyJs`
-
-`babel-minify-webpack-plugin`可以有效的和babel合作，进行代码的压缩，将 `babel-minify-webpack-plugin` 作为 `Babel` 的预设，仅使用 `babel-loader`（移除 UglifyJS 插件）这样也可以达到以上效果，即使没有使用 `babel-loader` ，也能正常压缩代码，只是代码没有被转换成es5。
-
-> webpack配置 `babel-minify-webpack-plugin`
-
-```js
-module.exports = {
-  // ...
-  plugins: [
-    new BabelMinify()
-  ]
-  // ...
-}
-```
-
 #### 第三方包的tree shaking
 
 对第三方包来说也是，应当使用 ES6 模块。现在越来越多的包作者同时发布 CommonJS 格式 和 ES6 格式的模块。ES6 模块的入口由 package.json 的字段 `module` 指定。比如 `vue` ，`module` 指定的是 `dist/vue.runtime.esm.js` ，这个只包含了runtime功能，但是有时候会需要用到 `template` 字段，这个时候就需要引入 `dist/vue.esm.js` 可以通过修改 `alias` 改变。
 
 #### 已知Bug
 
-如果我把上面的webpack配置的entry把a.js也给加上之后，tree shaking会失败
+> 如果我把上面的webpack配置的entry把a.js也给加上之后，tree shaking会失败
 
 ```js
 module.exports = {
@@ -264,6 +248,40 @@ module.exports = {
   }
 }]
 ```
+
+> 缺少作用域分析，导致tree shaking失败
+
+```js
+module.exports = {
+  entry: {
+    index: './src/index.js'
+  }
+}
+```
+
+```js
+// index.js
+import { a } from './a.js'
+
+a()
+```
+
+```js
+// a.js
+import _ from 'lodash'
+
+export function a () {
+  console.log('a')
+}
+
+export function b () {
+  return _.xxx()
+}
+```
+
+按照上面的例子，使用`webpack`打包的话，tree-shasking是会失败的，原因的webpack的处理方式主要是找一个 `import` 进来的变量是否在这个模块内出现过，而函数 `b` 虽然没有被使用，但是因为其函数内部使用了 `lodash` ，因此`lodash`部分的代码不会被删除，详见[issue6264](https://github.com/webpack/webpack/issues/6264)
+
+解决办法，使用插件 `webpack-deep-scope-plugin`,这个插件会对作用域进行分析，从而得出那些可以tree-shaking的代码来进行优化，具体可以看[作者的文章](https://diverse.space/2018/05/better-tree-shaking-with-scope-analysis)
 
 ### Rollup版
 
@@ -323,11 +341,3 @@ a();
 #### 第三方包的tree shaking
 
 对第三方包来说同样是需要 ES6 模块，另外 `rollup` 处理 `commonjs模块` 需要借助 [rollup-plugin-commonjs](https://github.com/rollup/rollup-plugin-commonjs)插件
-
-## 总结
-
-通过 tree-shaking 你可以相当程度上减少应用的体积。`Webpack` 2 内置支持它，但其机制并不同于 `Rollup` 。它会包含所有的代码，标记未使用的函数和函数，以便压缩工具能够移除。使用默认的压缩工具 `UglifyJS` 或 `babel-minify-webpack-plugin`来移除。我们还必须特别注意第三方模块发布的方式是否支持 tree-shaking。
-
-## 参考文章
-
-[如何评价 Webpack 2 新引入的 Tree-shaking 代码优化技术？](https://www.zhihu.com/question/41922432/answer/93346223)
