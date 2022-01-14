@@ -2,7 +2,7 @@
 
 ## tree shaking
 
-在js中的tree shaking最早由 `rollup` 作者提出，利用ES6 modules 的 `静态特性` 得以实现的。在打包时可以检测到未使用的代码，然后删除。webpack2也引入了这一技术， `webpack2` 已经内置支持es6模块和tree-shaking，本文会介绍tree-shaking的应用和一些问题。
+在 js 中的 `tree shaking` 最早由 `rollup` 作者提出，利用 `ES6 modules` 的 `静态特性` 得以实现的。在打包时可以检测到未使用的代码，然后删除。`webpack2` 也引入了这一技术， `webpack2` 已经内置支持 `es6 `模块和 `tree-shaking`，本文会介绍 `tree-shaking` 的应用和一些问题。
 
 ### webpack版
 

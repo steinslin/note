@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,4 +15,45 @@
   console.timeEnd('a')
 </script>
 <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.js"></script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+  .div1{
+  width: 100px;
+  height: 100px;
+  border-radius: 50px 0 0 50px;
+  background: #ff0000;
+}
+.div2 {
+}
+</style>
+<body>
+  
+</body>
+<div class='div1'>
+  
+</div>
+<div class='div2'></div>
+<script>
+  var string = 'test';
+  document.write('<scr' + 'ipt> console.log(string);arrfam([1]);console.log(num);</' + 'script>')
+</script>
+<script>
+  var num = 456;
+  function arrfam(arr) {
+    if (arr instanceof Array) {
+      console.log('is Array');
+    }else{
+      console.log('is string');
+    }
+  }
+  arrfam(string);
+  arrfam([string]);
+</script>
 </html>
